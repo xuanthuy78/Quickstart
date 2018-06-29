@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Task extends Model
 {
@@ -12,5 +13,14 @@ class Task extends Model
     public function user()
     {
     	return $this->belongsTo('App\User');
+    }
+
+    public function canDelete()
+    {
+    	$currentUser = Auth::user();
+    	if ($this->user_id == $currentUser->id) {
+            return true;
+        }
+        return false;
     }
 }
