@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
 @section('content')
-
 <div class="panel-body">
         <form action="{{ url('task') }}" method="POST" class="form-horizontal">
             {{ csrf_field() }}
@@ -41,12 +39,15 @@
                 	@foreach($tasks as $task)
                 	<tr>
                 		<td>{{$task->name}}</td>
-                        <td><a href="{{url('task/' . $task->id . '/delete')}}" class="btn btn-warning" ><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
+                        <td>
+                            @if ($task->canDelete())
+                            <a href="{{url('task/' . $task->id . '/delete')}}" class="btn btn-warning" ><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                            @endif
+                        </td>
                 	</tr>
                 	@endforeach
                 </table>
             </div>
         </div>
 </div>
-
 @stop

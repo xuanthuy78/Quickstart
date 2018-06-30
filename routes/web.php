@@ -14,10 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('task', 'TaskController@createTask');
-Route::post('task', 'TaskController@storeTask');
-Route::get('task', 'TaskController@showTask');
-Route::get('task/{id}/delete', 'TaskController@deleteTask');
+Route::group(['middleware' => 'loginUser'], function(){
+	Route::get('task', 'TaskController@createTask');
+	Route::post('task', 'TaskController@storeTask');
+	Route::get('task', 'TaskController@showTask');
+	Route::get('task/{id}/delete', 'TaskController@deleteTask');
+});
+
 
 Auth::routes();
 
