@@ -39,11 +39,11 @@
                 	@foreach($tasks as $task)
                 	<tr>
                 		<td>{{$task->name}}</td>
-                                <td>
-                                    @if ($task->canDelete())
-                                    <a href="{{url('task/' . $task->id . '/delete')}}" class="btn btn-warning" ><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                                    @endif
-                                </td>
+                        <td>
+                            @if ($task->canDelete())
+                            <a href="{{url('task/' . $task->id . '/delete')}}" class="btn btn-warning" ><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                            @endif
+                        </td>
                 	</tr>
                 	@endforeach
                 </table>
