@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Task;
 use App\Http\Requests\CreateTaskRequest;
 use Auth;
-use User;
+use App\User;
 
 class TaskController extends Controller
 {
